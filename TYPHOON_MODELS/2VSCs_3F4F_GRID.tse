@@ -1,0 +1,1728 @@
+version = 4.2
+
+//
+// Saved by sw version: 2023.2
+//
+
+model "vsc_3f_grid" {
+    configuration {
+        hil_device = "HIL404"
+        hil_configuration_id = 5
+        simulation_method = exact
+        simulation_time_step = 1e-6
+        simulation_discret_scaling = 1.0
+        dsp_timer_periods = 100e-6, 50e-3
+        ss_calc_method = "systematic elimination"
+        enb_pole_shift = True
+        enb_gds_oversampling = True
+        show_modes = False
+        device_ao_limit_enable = False
+        reset_analog_outputs_on_sim_stop = True
+        reset_digital_outputs_on_sim_stop = True
+        vhil_adio_loopback = False
+        cpl_stb = False
+        enb_dep_sw_detect = False
+        code_section = "internal memory"
+        data_section = "internal memory"
+        sys_sp_rate_1 = 0.0001
+        sys_sp_rate_2 = 0.05
+        sys_real_type_precision = "default"
+        user_real_type_precision = "default"
+        sys_cpu_optimization = "high"
+        user_cpu_optimization = "high"
+        user_cpu_part_option = "default"
+        matrix_based_reduction = True
+        cpl_dynamics_analysis = False
+        export_ss_to_pickle = False
+        ground_scope_core = False
+        dss_num_tol = 1e-15
+        cce_platform = "generic"
+        cce_use_relative_names = False
+        cce_type_mapping_real = "double"
+        cce_type_mapping_uint = "unsigned int"
+        cce_type_mapping_int = "int"
+        cce_directory = ""
+        cce_custom_type_int = ""
+        cce_custom_type_uint = ""
+        cce_custom_type_real = ""
+        tunable_params = "component defined"
+        sp_compiler_type = "C compiler"
+        sig_stim = "off"
+        export_resource_list = ""
+        export_dependency_list = ""
+        excluded_resource_list = ""
+        export_out_file = ""
+        export_lock_top_level = True
+        export_encrypt_library = True
+        export_encrypt_resources = True
+    }
+
+    component Subsystem Root {
+        component "core/Voltage Measurement" Vs_a1 {
+            bw_limit = "True"
+            frequency = "2e3"
+            signal_access = "Inherit"
+        }
+        [
+            position = 9568, 8552
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Current Measurement" Is_a1 {
+            bw_limit = "True"
+            frequency = "2e3"
+            signal_access = "Inherit"
+        }
+        [
+            position = 9800, 8216
+            size = 64, 32
+        ]
+
+        component "core/Current Measurement" Is_b1 {
+            bw_limit = "True"
+            frequency = "2e3"
+            signal_access = "Inherit"
+        }
+        [
+            position = 9800, 8312
+            size = 64, 32
+        ]
+
+        component "core/Current Measurement" Is_c1 {
+            bw_limit = "True"
+            frequency = "2e3"
+            signal_access = "Inherit"
+        }
+        [
+            position = 9800, 8408
+            size = 64, 32
+        ]
+
+        component "core/Voltage Measurement" Vs_b1 {
+            bw_limit = "True"
+            frequency = "2e3"
+            signal_access = "Inherit"
+        }
+        [
+            position = 9640, 8552
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Voltage Measurement" Vs_c1 {
+            bw_limit = "True"
+            frequency = "2e3"
+            signal_access = "Inherit"
+        }
+        [
+            position = 9712, 8552
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Three Phase Voltage Source" Vs1 {
+            init_rms_value = "230.0"
+        }
+        [
+            position = 11184, 8288
+            scale = -1, 1
+            size = 62, 256
+        ]
+
+        component "core/Ground" gnd2 {
+        }
+        [
+            position = 11312, 8552
+        ]
+
+        component "core/Product" Product2 {
+        }
+        [
+            position = 9440, 7368
+        ]
+
+        component "core/Product" Product3 {
+        }
+        [
+            position = 9440, 7472
+        ]
+
+        component "core/Product" Product4 {
+        }
+        [
+            position = 9440, 7576
+        ]
+
+        component "core/Sum" Sum3 {
+            signs = "3"
+        }
+        [
+            position = 9536, 7472
+        ]
+
+        component "core/Probe" p {
+        }
+        [
+            position = 9608, 7472
+        ]
+
+        component "core/IGBT Leg" "IGBT Leg4" {
+            S_bot = "24"
+            S_top = "30"
+            fvd_def_method = "LUT"
+            pwm_enable_di = "21"
+            pwm_enabling = "True"
+            signal_access = "Inherit"
+        }
+        [
+            position = 7880, 8176
+            size = 80, 192
+        ]
+
+        component "core/IGBT Leg" "IGBT Leg5" {
+            S_bot = "23"
+            S_top = "29"
+            fvd_def_method = "LUT"
+            pwm_enable_di = "21"
+            pwm_enabling = "True"
+            signal_access = "Inherit"
+        }
+        [
+            position = 7992, 8296
+            size = 80, 192
+        ]
+
+        component "core/IGBT Leg" "IGBT Leg6" {
+            S_bot = "26"
+            S_top = "32"
+            fvd_def_method = "LUT"
+            pwm_enable_di = "21"
+            pwm_enabling = "True"
+            signal_access = "Inherit"
+        }
+        [
+            position = 8104, 8416
+            size = 80, 192
+        ]
+
+        component "core/Three Phase Two Winding Transformer" Tr1 {
+            Poc1 = "46.0"
+            Psc1 = "235.0"
+            Sn = "15000.0"
+            V1 = "400.0"
+            clock_number = "11"
+            usc1 = "7.5"
+            winding_2_connection = "D"
+        }
+        [
+            position = 11520, 8816
+            size = 126, 256
+        ]
+
+        component "core/IGBT Leg" "IGBT Leg7" {
+            S_bot = "26"
+            S_top = "32"
+            fvd_def_method = "LUT"
+            pwm_enable_di = "21"
+            pwm_enabling = "True"
+            signal_access = "Inherit"
+        }
+        [
+            position = 8216, 8544
+            size = 80, 192
+        ]
+
+        component "core/Capacitor" C5 {
+            capacitance = "4400e-6"
+        }
+        [
+            position = 7736, 8192
+            rotation = right
+        ]
+
+        component "core/Resistor" R17 {
+            resistance = "0.1"
+        }
+        [
+            position = 7736, 8104
+            rotation = right
+        ]
+
+        component "core/Inductor" L10 {
+            inductance = "L_n"
+        }
+        [
+            position = 8784, 8640
+        ]
+
+        component "core/Resistor" R18 {
+            resistance = "R_n"
+        }
+        [
+            position = 8696, 8640
+        ]
+
+        component "core/Current Measurement" Is_n {
+            bw_limit = "True"
+            frequency = "2e3"
+            signal_access = "Inherit"
+        }
+        [
+            position = 10016, 8632
+            size = 64, 32
+        ]
+
+        component "core/Voltage Measurement" Vs_a2 {
+            bw_limit = "True"
+            frequency = "2e3"
+            signal_access = "Inherit"
+        }
+        [
+            position = 9888, 9376
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Current Measurement" Is_a2 {
+            bw_limit = "True"
+            frequency = "2e3"
+            signal_access = "Inherit"
+        }
+        [
+            position = 9368, 9040
+            size = 64, 32
+        ]
+
+        component "core/Current Measurement" Is_b2 {
+            bw_limit = "True"
+            frequency = "2e3"
+            signal_access = "Inherit"
+        }
+        [
+            position = 9368, 9136
+            size = 64, 32
+        ]
+
+        component "core/Current Measurement" Is_c2 {
+            bw_limit = "True"
+            frequency = "2e3"
+            signal_access = "Inherit"
+        }
+        [
+            position = 9368, 9232
+            size = 64, 32
+        ]
+
+        component "core/Voltage Measurement" Vs_b2 {
+            bw_limit = "True"
+            frequency = "2e3"
+            signal_access = "Inherit"
+        }
+        [
+            position = 9960, 9376
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Voltage Measurement" Vs_c2 {
+            bw_limit = "True"
+            frequency = "2e3"
+            signal_access = "Inherit"
+        }
+        [
+            position = 10032, 9376
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Inductor" L11 {
+            inductance = "L_t"
+        }
+        [
+            position = 8784, 9048
+        ]
+
+        component "core/Resistor" R19 {
+            resistance = "R_t"
+        }
+        [
+            position = 8696, 9048
+        ]
+
+        component "core/Inductor" L12 {
+            inductance = "L_t"
+        }
+        [
+            position = 8784, 9144
+        ]
+
+        component "core/Resistor" R21 {
+            resistance = "R_t"
+        }
+        [
+            position = 8696, 9144
+        ]
+
+        component "core/Inductor" L13 {
+            inductance = "L_t"
+        }
+        [
+            position = 8784, 9240
+        ]
+
+        component "core/Resistor" R22 {
+            resistance = "R_t"
+        }
+        [
+            position = 8696, 9240
+        ]
+
+        component "core/IGBT Leg" "IGBT Leg8" {
+            S_top = "6"
+            fvd_def_method = "LUT"
+            pwm_enabling = "True"
+            signal_access = "Inherit"
+        }
+        [
+            position = 7880, 9008
+            size = 80, 192
+        ]
+
+        component "core/IGBT Leg" "IGBT Leg9" {
+            S_bot = "1"
+            S_top = "5"
+            fvd_def_method = "LUT"
+            pwm_enabling = "True"
+            signal_access = "Inherit"
+        }
+        [
+            position = 7992, 9128
+            size = 80, 192
+        ]
+
+        component "core/IGBT Leg" "IGBT Leg10" {
+            S_bot = "4"
+            S_top = "8"
+            fvd_def_method = "LUT"
+            pwm_enabling = "True"
+            signal_access = "Inherit"
+        }
+        [
+            position = 8104, 9248
+            size = 80, 192
+        ]
+
+        component "core/IGBT Leg" "IGBT Leg11" {
+            S_bot = "3"
+            S_top = "7"
+            fvd_def_method = "LUT"
+            pwm_enabling = "True"
+            signal_access = "Inherit"
+        }
+        [
+            position = 8216, 9376
+            size = 80, 192
+        ]
+
+        component "core/Inductor" L17 {
+            inductance = "L_n"
+        }
+        [
+            position = 8784, 9336
+        ]
+
+        component "core/Resistor" R30 {
+            resistance = "R_n"
+        }
+        [
+            position = 8696, 9336
+        ]
+
+        component "core/Current Measurement" Is_n1 {
+            bw_limit = "True"
+            frequency = "2e3"
+            signal_access = "Inherit"
+        }
+        [
+            position = 10336, 9456
+            size = 64, 32
+        ]
+
+        component "core/Resistor" R31 {
+            resistance = "0.1"
+        }
+        [
+            position = 7736, 8544
+            rotation = right
+        ]
+
+        component "core/Capacitor" C10 {
+            capacitance = "4400e-6"
+        }
+        [
+            position = 7736, 8440
+            rotation = right
+        ]
+
+        component "core/Resistor" R32 {
+            resistance = "1e5"
+        }
+        [
+            position = 7648, 8488
+            rotation = right
+        ]
+
+        component "core/Resistor" R33 {
+            resistance = "1e5"
+        }
+        [
+            position = 7648, 8192
+            rotation = right
+        ]
+
+        component "core/Capacitor" C11 {
+            capacitance = "2200e-6"
+        }
+        [
+            position = 7672, 9032
+            rotation = right
+        ]
+
+        component "core/Resistor" R37 {
+            resistance = "1e5"
+        }
+        [
+            position = 7584, 9032
+            rotation = right
+        ]
+
+        component "core/Voltage Measurement" V_h1 {
+            frequency = "2e3"
+            signal_access = "Inherit"
+        }
+        [
+            position = 7512, 8136
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Voltage Measurement" V_h2 {
+            frequency = "2e3"
+            signal_access = "Inherit"
+        }
+        [
+            position = 7240, 9008
+            rotation = right
+            size = 64, 32
+        ]
+
+        component "core/Resistor" R38 {
+            resistance = "0.1"
+        }
+        [
+            position = 7584, 8048
+            rotation = down
+        ]
+
+        component "core/Resistor" R39 {
+            resistance = "0.1"
+        }
+        [
+            position = 7432, 8048
+            rotation = down
+        ]
+
+        component "core/Resistor" R40 {
+            resistance = "0.1"
+        }
+        [
+            position = 7360, 8888
+            rotation = down
+        ]
+
+        component "core/Four Phase Core Coupling" "Core Coupling 1" {
+            L1 = "0.0001"
+            R2 = "0.01"
+        }
+        [
+            position = 8864, 9192
+            rotation = down
+            size = 12, 352
+        ]
+
+        component "core/Single Phase Core Coupling" "Core Coupling 2" {
+            R2 = "0.01"
+        }
+        [
+            position = 7432, 8984
+            size = 12, 256
+        ]
+
+        component "core/Resistor" R41 {
+            resistance = "0.1"
+        }
+        [
+            position = 7424, 8680
+            rotation = left
+        ]
+
+        component "core/Resistor" R46 {
+            resistance = "100"
+        }
+        [
+            position = 11312, 8360
+            rotation = right
+        ]
+
+        component "core/Resistor" R47 {
+            resistance = "0.01"
+        }
+        [
+            position = 9472, 9480
+        ]
+
+        component "core/Resistor" R48 {
+            resistance = "0.1"
+        }
+        [
+            position = 7504, 8888
+            rotation = down
+        ]
+
+        component "core/Resistor" R49 {
+            resistance = "0.1"
+        }
+        [
+            position = 7504, 9080
+            rotation = down
+        ]
+
+        component "core/Resistor" R50 {
+            resistance = "0.01"
+        }
+        [
+            position = 7760, 8888
+            rotation = down
+        ]
+
+        component "core/Series RLC Branch" "Series RLC Branch1" {
+            branch_type = "RC"
+            capacitance = "C"
+            num_phases = "Three-Phase"
+            resistance = "R_d"
+        }
+        [
+            position = 9080, 8536
+            rotation = right
+            size = 128, 256
+        ]
+
+        component "core/Series RLC Branch" "Series RLC Branch2" {
+            branch_type = "RL"
+            capacitance = "C"
+            inductance = "L_t"
+            num_phases = "Three-Phase"
+            resistance = "R_t"
+        }
+        [
+            position = 8744, 8304
+            size = 128, 256
+        ]
+
+        component "core/Series RLC Branch" "Series RLC Branch3" {
+            branch_type = "RL"
+            capacitance = "C"
+            inductance = "L_s"
+            num_phases = "Three-Phase"
+            resistance = "R_s"
+        }
+        [
+            position = 9440, 8312
+            size = 128, 256
+        ]
+
+        component "core/Series RLC Branch" "Series RLC Branch4" {
+            branch_type = "RL"
+            capacitance = "C"
+            inductance = "L_s"
+            num_phases = "Three-Phase"
+            resistance = "R_s"
+        }
+        [
+            position = 9520, 9136
+            size = 128, 256
+        ]
+
+        component "core/Series RLC Branch" "Series RLC Branch5" {
+            branch_type = "RC"
+            capacitance = "C"
+            num_phases = "Three-Phase"
+            resistance = "R_d"
+        }
+        [
+            position = 9144, 9376
+            rotation = right
+            size = 128, 256
+        ]
+
+        component "core/Series RLC Branch" "Series RLC Branch6" {
+            branch_type = "RL"
+            capacitance = "C"
+            inductance = "L_s"
+            num_phases = "Three-Phase"
+            resistance = "R_s"
+        }
+        [
+            position = 11024, 8288
+            size = 128, 256
+        ]
+
+        component "core/Three Phase Core Coupling" "Core Coupling 3" {
+        }
+        [
+            position = 8856, 8304
+            rotation = down
+            size = 12, 256
+        ]
+
+        tag Goto1 {
+            value = "vc"
+            scope = local
+            kind = sp
+            direction = in
+        }
+        [
+            position = 9960, 7616
+            size = 60, 20
+        ]
+
+        tag Goto2 {
+            value = "vb"
+            scope = local
+            kind = sp
+            direction = in
+        }
+        [
+            position = 9960, 7584
+            size = 60, 20
+        ]
+
+        tag Goto3 {
+            value = "va"
+            scope = local
+            kind = sp
+            direction = in
+        }
+        [
+            position = 9960, 7552
+            size = 60, 20
+        ]
+
+        tag Goto4 {
+            value = "ic"
+            scope = local
+            kind = sp
+            direction = in
+        }
+        [
+            position = 9800, 7616
+            size = 60, 20
+        ]
+
+        tag Goto5 {
+            value = "ib"
+            scope = local
+            kind = sp
+            direction = in
+        }
+        [
+            position = 9800, 7576
+            size = 60, 20
+        ]
+
+        tag Goto6 {
+            value = "ia"
+            scope = local
+            kind = sp
+            direction = in
+        }
+        [
+            position = 9800, 7536
+            size = 60, 20
+        ]
+
+        tag From1 {
+            value = "va"
+            scope = local
+            kind = sp
+            direction = out
+        }
+        [
+            position = 9336, 7360
+            size = 60, 20
+        ]
+
+        tag From2 {
+            value = "ia"
+            scope = local
+            kind = sp
+            direction = out
+        }
+        [
+            position = 9336, 7408
+            size = 60, 20
+        ]
+
+        tag From3 {
+            value = "vb"
+            scope = local
+            kind = sp
+            direction = out
+        }
+        [
+            position = 9336, 7464
+            size = 60, 20
+        ]
+
+        tag From4 {
+            value = "ib"
+            scope = local
+            kind = sp
+            direction = out
+        }
+        [
+            position = 9336, 7512
+            size = 60, 20
+        ]
+
+        tag From5 {
+            value = "vc"
+            scope = local
+            kind = sp
+            direction = out
+        }
+        [
+            position = 9336, 7568
+            size = 60, 20
+        ]
+
+        tag From6 {
+            value = "ic"
+            scope = local
+            kind = sp
+            direction = out
+        }
+        [
+            position = 9336, 7616
+            size = 60, 20
+        ]
+
+        junction Junction27 pe
+        [
+            position = 9640, 8640
+        ]
+
+        junction Junction57 pe
+        [
+            position = 7992, 8048
+        ]
+
+        junction Junction59 pe
+        [
+            position = 7984, 8592
+        ]
+
+        junction Junction60 pe
+        [
+            position = 7880, 8592
+        ]
+
+        junction Junction65 pe
+        [
+            position = 7880, 8048
+        ]
+
+        junction Junction78 pe
+        [
+            position = 9960, 9464
+        ]
+
+        junction Junction84 pe
+        [
+            position = 7992, 8880
+        ]
+
+        junction Junction86 pe
+        [
+            position = 7984, 9424
+        ]
+
+        junction Junction89 pe
+        [
+            position = 8104, 8880
+        ]
+
+        junction Junction90 pe
+        [
+            position = 8040, 9424
+        ]
+
+        junction Junction95 pe
+        [
+            position = 10032, 9464
+        ]
+
+        junction Junction102 pe
+        [
+            position = 7736, 8048
+        ]
+
+        junction Junction103 pe
+        [
+            position = 7736, 8592
+        ]
+
+        junction Junction104 pe
+        [
+            position = 7736, 8336
+        ]
+
+        junction Junction106 pe
+        [
+            position = 7648, 8336
+        ]
+
+        junction Junction112 pe
+        [
+            position = 7880, 9424
+        ]
+
+        junction Junction113 pe
+        [
+            position = 7640, 8048
+        ]
+
+        junction Junction114 pe
+        [
+            position = 7512, 8048
+        ]
+
+        junction Junction116 pe
+        [
+            position = 7632, 8592
+        ]
+
+        junction Junction122 pe
+        [
+            position = 7512, 8592
+        ]
+
+        junction Junction132 pe
+        [
+            position = 11256, 8288
+        ]
+
+        junction Junction152 pe
+        [
+            position = 7240, 8880
+        ]
+
+        junction Junction158 pe
+        [
+            position = 7584, 8888
+        ]
+
+        junction Junction160 pe
+        [
+            position = 7240, 9080
+        ]
+
+        junction Junction161 pe
+        [
+            position = 7600, 9432
+        ]
+
+        junction Junction163 pe
+        [
+            position = 7672, 9432
+        ]
+
+        junction Junction164 pe
+        [
+            position = 7864, 8880
+        ]
+
+        junction Junction165 pe
+        [
+            position = 7672, 8888
+        ]
+
+        junction Junction175 pe
+        [
+            position = 9560, 8640
+        ]
+
+        junction Junction176 pe
+        [
+            position = 9080, 8640
+        ]
+
+        junction Junction177 pe
+        [
+            position = 9176, 8640
+        ]
+
+        junction Junction178 pe
+        [
+            position = 9568, 8216
+        ]
+
+        junction Junction179 pe
+        [
+            position = 9640, 8304
+        ]
+
+        junction Junction180 pe
+        [
+            position = 9712, 8408
+        ]
+
+        junction Junction184 pe
+        [
+            position = 10024, 9232
+        ]
+
+        junction Junction185 pe
+        [
+            position = 9960, 9144
+        ]
+
+        junction Junction186 pe
+        [
+            position = 9888, 9040
+        ]
+
+        junction Junction191 pe
+        [
+            position = 9144, 9480
+        ]
+
+        junction Junction192 pe
+        [
+            position = 9240, 9472
+        ]
+
+        junction Junction193 pe
+        [
+            position = 10216, 8216
+        ]
+
+        junction Junction194 pe
+        [
+            position = 10312, 8312
+        ]
+
+        junction Junction195 pe
+        [
+            position = 10392, 8408
+        ]
+
+        junction Junction196 pe
+        [
+            position = 9048, 9048
+        ]
+
+        junction Junction197 pe
+        [
+            position = 9128, 9136
+        ]
+
+        junction Junction198 pe
+        [
+            position = 9240, 9248
+        ]
+
+        junction Junction199 pe
+        [
+            position = 9040, 9480
+        ]
+
+        junction Junction200 pe
+        [
+            position = 9176, 8416
+        ]
+
+        junction Junction201 pe
+        [
+            position = 9072, 8312
+        ]
+
+        junction Junction202 pe
+        [
+            position = 8984, 8208
+        ]
+
+        junction Junction203 pe
+        [
+            position = 9880, 9464
+        ]
+
+        connect Vs_b1.n_node Junction27 as Connection114
+        connect Product2.in From1 as Connection248
+        connect From2 Product2.in1 as Connection249
+        connect Product3.in From3 as Connection250
+        connect From4 Product3.in1 as Connection251
+        connect Product4.in From5 as Connection252
+        connect From6 Product4.in1 as Connection253
+        [
+            breakpoints = 9400, 7616; 9400, 7584
+        ]
+        connect Product3.out Sum3.in1 as Connection254
+        connect Product2.out Sum3.in as Connection255
+        connect Product4.out Sum3.in2 as Connection256
+        connect p.in Sum3.out as Connection257
+        connect "IGBT Leg5.pos_out" Junction57 as Connection329
+        connect "IGBT Leg5.neg_out" Junction59 as Connection335
+        connect Junction59 Junction60 as Connection336
+        connect "IGBT Leg4.neg_out" Junction60 as Connection338
+        connect "IGBT Leg4.pos_out" Junction65 as Connection497
+        connect Junction65 Junction57 as Connection498
+        [
+            breakpoints = 7872, 8048
+        ]
+        connect L10.p_node R18.n_node as Connection501
+        connect R18.p_node "IGBT Leg7.a_in" as Connection506
+        [
+            breakpoints = 8456, 8616
+        ]
+        connect Vs_b2.n_node Junction78 as Connection554
+        connect L11.p_node R19.n_node as Connection555
+        connect L12.p_node R21.n_node as Connection556
+        connect L13.p_node R22.n_node as Connection557
+        connect "IGBT Leg9.pos_out" Junction84 as Connection577
+        connect "IGBT Leg9.neg_out" Junction86 as Connection580
+        connect L17.p_node R30.n_node as Connection588
+        connect R22.p_node "IGBT Leg10.a_in" as Connection593
+        connect "IGBT Leg9.a_in" R21.p_node as Connection594
+        connect R19.p_node "IGBT Leg8.a_in" as Connection595
+        [
+            breakpoints = 8392, 9000
+        ]
+        connect Junction84 Junction89 as Connection596
+        [
+            breakpoints = 7992, 8880
+        ]
+        connect Junction89 "IGBT Leg10.pos_out" as Connection597
+        [
+            breakpoints = 8104, 8880
+        ]
+        connect "IGBT Leg11.pos_out" Junction89 as Connection598
+        connect "IGBT Leg10.neg_out" Junction90 as Connection599
+        [
+            breakpoints = 8104, 9424
+        ]
+        connect Junction90 Junction86 as Connection600
+        connect "IGBT Leg11.neg_out" Junction90 as Connection601
+        [
+            breakpoints = 8040, 9464
+        ]
+        connect Vs_c2.n_node Junction95 as Connection612
+        connect Junction95 Junction78 as Connection613
+        connect Is_n1.p_node Junction95 as Connection614
+        connect C5.p_node R17.n_node as Connection636
+        connect Junction102 Junction65 as Connection638
+        connect R17.p_node Junction102 as Connection639
+        connect R31.p_node C10.n_node as Connection640
+        connect Junction60 Junction103 as Connection641
+        connect R31.n_node Junction103 as Connection643
+        connect C10.p_node Junction104 as Connection644
+        connect Junction104 C5.n_node as Connection645
+        connect R32.p_node Junction106 as Connection650
+        connect Junction106 Junction104 as Connection651
+        connect R33.n_node Junction106 as Connection652
+        connect Junction86 Junction112 as Connection674
+        [
+            breakpoints = 7984, 9424
+        ]
+        connect Junction112 "IGBT Leg8.neg_out" as Connection675
+        [
+            breakpoints = 7880, 9424
+        ]
+        connect Junction102 Junction113 as Connection694
+        [
+            breakpoints = 7736, 8048; 7736, 8048
+        ]
+        connect Junction113 R33.p_node as Connection695
+        [
+            breakpoints = 7640, 8048; 7648, 8048
+        ]
+        connect R38.p_node Junction113 as Connection696
+        connect V_h1.p_node Junction114 as Connection698
+        connect Junction114 R38.n_node as Connection699
+        connect R39.p_node Junction114 as Connection700
+        connect R32.n_node Junction116 as Connection705
+        connect Junction116 Junction103 as Connection706
+        [
+            breakpoints = 7640, 8592; 7632, 8592; 7736, 8592
+        ]
+        connect Junction116 Junction122 as Connection751
+        [
+            breakpoints = 7632, 8592
+        ]
+        connect Junction122 V_h1.n_node as Connection752
+        [
+            breakpoints = 7512, 8592; 7512, 8592
+        ]
+        connect R41.n_node Junction122 as Connection753
+        connect "IGBT Leg6.neg_out" Junction59 as Connection803
+        [
+            breakpoints = 8104, 8592; 8040, 8592
+        ]
+        connect Junction57 "IGBT Leg6.pos_out" as Connection804
+        [
+            breakpoints = 7992, 8048; 7992, 8048; 8104, 8048; 8104, 8048
+        ]
+        connect Vs_c1.n_node Junction27 as Connection814
+        [
+            breakpoints = 9712, 8640; 9712, 8640; 9640, 8640
+        ]
+        connect gnd2.node R46.n_node as Connection847
+        connect Vs1.n_node Junction132 as Connection884
+        connect Junction132 R46.p_node as Connection885
+        [
+            breakpoints = 11264, 8288
+        ]
+        connect Is_n1.n_node Junction132 as Connection886
+        connect V_h2.p_node Junction152 as Connection1003
+        connect Junction152 R39.n_node as Connection1004
+        connect R40.n_node Junction152 as Connection1005
+        connect R49.n_node "Core Coupling 2.b_out" as Connection1040
+        connect "Core Coupling 2.a_out" R48.n_node as Connection1041
+        connect R37.p_node Junction158 as Connection1042
+        connect R48.p_node Junction158 as Connection1044
+        connect R41.p_node Junction160 as Connection1048
+        [
+            breakpoints = 7424, 8776; 7152, 8784
+        ]
+        connect Junction160 V_h2.n_node as Connection1049
+        [
+            breakpoints = 7240, 9080; 7240, 9080
+        ]
+        connect "Core Coupling 2.b_in" Junction160 as Connection1050
+        connect R40.p_node "Core Coupling 2.a_in" as Connection1051
+        connect R49.p_node Junction161 as Connection1055
+        [
+            breakpoints = 7560, 9432; 7568, 9432; 7576, 9432; 7576, 9432; 7568, 9432
+        ]
+        connect R37.n_node Junction161 as Connection1057
+        connect Junction161 Junction163 as Connection1063
+        [
+            breakpoints = 7600, 9432
+        ]
+        connect Junction163 Junction112 as Connection1064
+        [
+            breakpoints = 7672, 9432; 7672, 9432; 7672, 9432
+        ]
+        connect C11.n_node Junction163 as Connection1065
+        connect Junction84 Junction164 as Connection1068
+        [
+            breakpoints = 7992, 8880; 7992, 8880
+        ]
+        connect Junction164 "IGBT Leg8.pos_out" as Connection1069
+        [
+            breakpoints = 7872, 8880; 7872, 8880; 7880, 8880
+        ]
+        connect R50.p_node Junction164 as Connection1070
+        connect C11.p_node Junction165 as Connection1071
+        connect Junction165 Junction158 as Connection1072
+        [
+            breakpoints = 7664, 8880; 7672, 8888; 7672, 8888; 7592, 8888; 7584, 8888; 7584, 8888; 7584, 8888
+        ]
+        connect R50.n_node Junction165 as Connection1073
+        connect "IGBT Leg11.a_in" R30.p_node as Connection1074
+        connect Junction27 Junction175 as Connection1134
+        [
+            breakpoints = 9640, 8640; 9640, 8640
+        ]
+        connect Junction175 Vs_a1.n_node as Connection1135
+        [
+            breakpoints = 9568, 8640; 9568, 8640; 9568, 8640
+        ]
+        connect "Series RLC Branch1.P3_neg" Junction176 as Connection1137
+        connect "Series RLC Branch1.P2_neg" Junction176 as Connection1139
+        connect Junction176 Junction177 as Connection1140
+        connect Junction177 Junction175 as Connection1141
+        connect "Series RLC Branch1.P1_neg" Junction177 as Connection1142
+        connect "IGBT Leg4.a_in" "Series RLC Branch2.P1_pos" as Connection1161
+        connect "IGBT Leg5.a_in" "Series RLC Branch2.P2_pos" as Connection1162
+        connect "Series RLC Branch2.P3_pos" "IGBT Leg6.a_in" as Connection1163
+        connect Vs_a1.p_node Junction178 as Connection1170
+        connect Junction178 Is_a1.p_node as Connection1171
+        [
+            breakpoints = 9568, 8216; 9568, 8216; 9568, 8216
+        ]
+        connect "Series RLC Branch3.P1_neg" Junction178 as Connection1172
+        connect Vs_b1.p_node Junction179 as Connection1173
+        connect Junction179 Is_b1.p_node as Connection1174
+        [
+            breakpoints = 9640, 8312; 9640, 8312
+        ]
+        connect "Series RLC Branch3.P2_neg" Junction179 as Connection1175
+        connect Vs_c1.p_node Junction180 as Connection1176
+        [
+            breakpoints = 9712, 8416
+        ]
+        connect Junction180 Is_c1.p_node as Connection1177
+        [
+            breakpoints = 9712, 8408; 9712, 8408; 9712, 8408
+        ]
+        connect "Series RLC Branch3.P3_neg" Junction180 as Connection1178
+        connect "Series RLC Branch4.P2_pos" Is_b2.n_node as Connection1191
+        connect Is_a2.n_node "Series RLC Branch4.P1_pos" as Connection1192
+        connect Is_c2.n_node "Series RLC Branch4.P3_pos" as Connection1193
+        connect Junction184 Vs_c2.p_node as Connection1195
+        [
+            breakpoints = 10024, 9232; 10024, 9232; 10032, 9232
+        ]
+        connect "Series RLC Branch4.P3_neg" Junction184 as Connection1196
+        connect Junction185 Vs_b2.p_node as Connection1198
+        [
+            breakpoints = 9960, 9144; 9960, 9144; 9960, 9152
+        ]
+        connect "Series RLC Branch4.P2_neg" Junction185 as Connection1199
+        connect Vs_a2.p_node Junction186 as Connection1200
+        connect "Series RLC Branch4.P1_neg" Junction186 as Connection1202
+        connect "Series RLC Branch5.P2_neg" Junction191 as Connection1221
+        connect R47.p_node Junction192 as Connection1222
+        [
+            breakpoints = 9384, 9480; 9240, 9480
+        ]
+        connect Junction192 Junction191 as Connection1223
+        [
+            breakpoints = 9240, 9480; 9144, 9480
+        ]
+        connect "Series RLC Branch5.P1_neg" Junction192 as Connection1224
+        connect "Series RLC Branch6.P2_neg" Vs1.b_node as Connection1228
+        connect Vs1.c_node "Series RLC Branch6.P3_neg" as Connection1229
+        connect "Series RLC Branch6.P1_neg" Vs1.a_node as Connection1230
+        connect Junction186 Junction193 as Connection1231
+        [
+            breakpoints = 9888, 9040; 9888, 9040; 9888, 9040; 9888, 9040; 9888, 9040; 9888, 9040; 10216, 9040; 10216, 8216
+        ]
+        connect Junction193 Is_a1.n_node as Connection1232
+        [
+            breakpoints = 10208, 8216
+        ]
+        connect "Series RLC Branch6.P1_pos" Junction193 as Connection1233
+        connect Is_b1.n_node Junction194 as Connection1234
+        connect Junction194 Junction185 as Connection1235
+        [
+            breakpoints = 10312, 8312; 10312, 8312
+        ]
+        connect "Series RLC Branch6.P2_pos" Junction194 as Connection1236
+        connect Is_c1.n_node Junction195 as Connection1237
+        connect Junction195 Junction184 as Connection1238
+        [
+            breakpoints = 10392, 8408; 10392, 8408; 10392, 8408; 10392, 8408
+        ]
+        connect "Series RLC Branch6.P3_pos" Junction195 as Connection1239
+        connect "Core Coupling 1.d_out" L11.n_node as Connection1244
+        connect L12.n_node "Core Coupling 1.c_out" as Connection1245
+        connect L13.n_node "Core Coupling 1.b_out" as Connection1246
+        connect "Core Coupling 1.a_out" L17.n_node as Connection1247
+        connect "Series RLC Branch5.P3_pos" Junction196 as Connection1248
+        connect Junction196 Is_a2.p_node as Connection1249
+        [
+            breakpoints = 9048, 9048; 9112, 9056; 9112, 9040
+        ]
+        connect "Core Coupling 1.d_in" Junction196 as Connection1250
+        connect Is_b2.p_node Junction197 as Connection1251
+        [
+            breakpoints = 9184, 9136
+        ]
+        connect Junction197 "Series RLC Branch5.P2_pos" as Connection1252
+        [
+            breakpoints = 9136, 9144
+        ]
+        connect "Core Coupling 1.c_in" Junction197 as Connection1253
+        connect "Series RLC Branch5.P1_pos" Junction198 as Connection1254
+        connect Junction198 Is_c2.p_node as Connection1255
+        [
+            breakpoints = 9240, 9240; 9256, 9232
+        ]
+        connect "Core Coupling 1.b_in" Junction198 as Connection1256
+        connect Junction191 Junction199 as Connection1257
+        [
+            breakpoints = 9144, 9480
+        ]
+        connect Junction199 "Series RLC Branch5.P3_neg" as Connection1258
+        [
+            breakpoints = 9048, 9480
+        ]
+        connect "Core Coupling 1.a_in" Junction199 as Connection1259
+        connect "Core Coupling 3.b_out" "Series RLC Branch2.P2_neg" as Connection1263
+        connect "Series RLC Branch2.P1_neg" "Core Coupling 3.c_out" as Connection1264
+        connect "Series RLC Branch2.P3_neg" "Core Coupling 3.a_out" as Connection1265
+        connect "Series RLC Branch1.P1_pos" Junction200 as Connection1266
+        connect Junction200 "Series RLC Branch3.P3_pos" as Connection1267
+        [
+            breakpoints = 9176, 8408
+        ]
+        connect "Core Coupling 3.a_in" Junction200 as Connection1268
+        connect "Series RLC Branch1.P2_pos" Junction201 as Connection1269
+        connect Junction201 "Series RLC Branch3.P2_pos" as Connection1270
+        [
+            breakpoints = 9072, 8312; 9080, 8312
+        ]
+        connect "Core Coupling 3.b_in" Junction201 as Connection1271
+        connect "Series RLC Branch1.P3_pos" Junction202 as Connection1272
+        [
+            breakpoints = 8984, 8216; 8984, 8216
+        ]
+        connect Junction202 "Series RLC Branch3.P1_pos" as Connection1273
+        [
+            breakpoints = 8984, 8208
+        ]
+        connect "Core Coupling 3.c_in" Junction202 as Connection1274
+        connect Junction78 Junction203 as Connection1276
+        [
+            breakpoints = 9960, 9464; 9960, 9464; 9960, 9464
+        ]
+        connect Junction203 Vs_a2.n_node as Connection1277
+        [
+            breakpoints = 9888, 9464; 9888, 9464; 9888, 9464; 9888, 9464; 9888, 9464; 9888, 9464; 9888, 9456
+        ]
+        connect R47.n_node Junction203 as Connection1278
+    }
+
+    logically_deleted {
+        "Product2"
+        "Product3"
+        "Product4"
+        "Sum3"
+        "p"
+        "Tr1"
+        "IGBT Leg7"
+        "L10"
+        "R18"
+        "Is_n"
+        "Goto1"
+        "Goto2"
+        "Goto3"
+        "Goto4"
+        "Goto5"
+        "Goto6"
+        "From1"
+        "From2"
+        "From3"
+        "From4"
+        "From5"
+        "From6"
+        "Connection248"
+        "Connection249"
+        "Connection250"
+        "Connection251"
+        "Connection252"
+        "Connection253"
+        "Connection254"
+        "Connection255"
+        "Connection256"
+        "Connection257"
+        "Connection501"
+        "Connection506"
+    }
+
+    default {
+        "core/Capacitor" {
+            capacitance = "1e-6"
+            initial_voltage = "0"
+            pole_shift_ignore = "False"
+            visible = "True"
+        }
+
+        "core/Inductor" {
+            inductance = "1e-3"
+            initial_current = "0.0"
+            pole_shift_ignore = "False"
+            visible = "True"
+        }
+
+        "core/Probe" {
+            signal_access = "inherit"
+            addr = "0"
+            override_signal_name = "False"
+            signal_name = ""
+            signal_type = "generic"
+            streaming_en = "False"
+            streaming_er_idx = "0"
+            execution_rate = "inherit"
+        }
+
+        "core/Product" {
+            signs = "2"
+            execution_rate = "inherit"
+        }
+
+        "core/Resistor" {
+            resistance = "1"
+            param_set = ""
+        }
+
+        "core/Sum" {
+            signs = "2"
+            execution_rate = "inherit"
+        }
+
+        "core/Current Measurement" {
+            signal_access = "inherit"
+            bw_limit = "False"
+            frequency = "10e3"
+            comparator_enable = "False"
+            operator = "greater"
+            threshold = "0"
+            cmp_abs_value = "False"
+            feed_forward = "false"
+            sig_output = "False"
+            sig_output_filt_and_full_bw = "False"
+            execution_rate = "100e-6"
+            addr = "0"
+            nd_msr_estimation = "false"
+            dev_cpl_msr = "false"
+            host_device = "0"
+            output_to_device = "0"
+            dev_cpl_index = "0"
+            dev_cpl_var_nb = "0"
+            visible = "True"
+            override_signal_name = "False"
+            signal_name = ""
+        }
+
+        "core/Four Phase Core Coupling" {
+            snb_type_i = "none"
+            R1 = "100e3"
+            C1 = "1e-06"
+            C2 = "1e-06"
+            fixed_snb_i = "false"
+            snb_type_u = "none"
+            R2 = "0.1"
+            L1 = "0.1"
+            L2 = "0.1"
+            fixed_snb_u = "false"
+            cpl_connection = "star"
+        }
+
+        "core/IGBT Leg" {
+            signal_access = "inherit"
+            model_type = "Global GDS oversampling"
+            ctrl_src = "Digital input per switch"
+            op_mode = "Fixed carrier frequency"
+            carrier_freq = "10000.0"
+            phase_op_mode = "Fixed carrier phase offset"
+            carr_ph_offset = "0.0"
+            d_time = "5e-6"
+            ref_sig_min_max = "[-1.0, 1.0]"
+            load_mode = "on min"
+            execution_rate = "inherit"
+            S_top = "1"
+            S_top_logic = "active high"
+            S_bot = "2"
+            S_bot_logic = "active high"
+            S_top_I = "False"
+            S_bot_I = "False"
+            _control_property = "all high"
+            switches_names_at_mask = "[]"
+            pwm_enabling = "False"
+            pwm_enable_di = "13"
+            pwm_enable_inv = "active high"
+            delay_enabled = "False"
+            fixed_delay = "1e-6"
+            var_delay_lut = "[-10.0, 1e-6, 10.0, 1e-6]"
+            preview_var_delay = "Preview"
+            vout_cmp_pullup_mode = "False"
+            vout_cmp_timeout = "5e-6"
+            show_monitoring = "False"
+            fvd = "False"
+            losses_estimation = "False"
+            fvd_def_method = "Voltage and Resistance"
+            Import_igbt_xml = "not selected"
+            Import_diode_xml = "not selected"
+            Switch_type = "IGBT"
+            Vce = "1.3"
+            Rce = "0"
+            Vd = "1.2"
+            Rd = "0"
+            i_sw = "[0.0, 6.0, 12.0, 18.0, 24.0]"
+            v_sw = "[0.0, 600.0]"
+            temp_sw = "[25.0, 50.0, 75.0, 100.0, 125.0]"
+            vce_table_out = "[1.3, 1.3, 1.3, 1.3, 1.3]"
+            vd_table_out = "[1.2, 1.2, 1.2, 1.2, 1.2]"
+            et_on_table_out = "[[0.0, 0.0275e-3, 0.15e-3, 0.275e-3, 0.3e-3], [0.35*3.8e-3, 0.4*3.8e-3, 0.8*3.8e-3, 0.68*3.8e-3, 0.9*3.8e-3], [0.65*3.8e-3, 0.9*3.8e-3, 1.2*3.8e-3, 1.5*3.8e-3, 1.7*3.8e-3], [0.9*3.8e-3, 1.3*3.8e-3, 1.7*3.8e-3, 1.9*3.8e-3, 2.25*3.8e-3], [1.1*3.8e-3, 1.7*3.8e-3, 2.1*3.8e-3, 2.3*3.8e-3, 2.5*3.8e-3]]"
+            et_off_table_out = "[[0.0, 0.0275e-3, 0.15e-3, 0.275e-3, 0.3e-3], [0.35*2.1e-3, 0.4*2.1e-3, 0.8*2.1e-3, 0.68*2.1e-3, 0.9*2.1e-3], [0.65*2.1e-3, 0.9*2.1e-3, 1.2*2.1e-3, 1.5*2.1e-3, 1.7*2.1e-3], [0.9*2.1e-3, 1.3*2.1e-3, 1.7*2.1e-3, 1.9*2.1e-3, 2.25*2.1e-3], [1.1*2.1e-3, 1.7*2.1e-3, 2.1*2.1e-3, 2.3*2.1e-3, 2.5*2.1e-3]]"
+            ed_off_table_out = "[[0.0, 0.0275e-3, 0.15e-3, 0.275e-3, 0.3e-3], [0.35*2.2e-3, 0.4*2.2e-3, 0.8*2.2e-3, 0.68*2.2e-3, 0.9*2.2e-3], [0.65*2.2e-3, 0.9*2.2e-3, 1.2*2.2e-3, 1.5*2.2e-3, 1.7*2.2e-3], [0.9*2.2e-3, 1.3*2.2e-3, 1.7*2.2e-3, 1.9*2.2e-3, 2.25*2.2e-3], [1.1*2.2e-3, 1.7*2.2e-3, 2.1*2.2e-3, 2.3*2.2e-3, 2.5*2.2e-3]]"
+            temp_estimation = "False"
+            thermal_networks_type = "Foster"
+            switch_Rth = "[0.159, 0.133, 0.120, 0.038]"
+            switch_Tth = "[1.1e-1, 1.56e-2, 1.35e-3, 1.51e-4]"
+            switch_Cth = "[0.0029, 0.0097, 0.1068, 0.8500]"
+            diode_Rth = "[0.159, 0.133, 0.120, 0.038]"
+            diode_Tth = "[1.1e-1, 1.56e-2, 1.35e-3, 1.51e-4]"
+            diode_Cth = "[0.0029, 0.0097, 0.1068, 0.8500]"
+            loss_exec_rate = "100e-6"
+            visualize_luts = "Visualize Lookup Tables"
+            show_cnt_out = "False"
+            PESB_Optimization = "True"
+            dtv_flag_en = "True"
+            reserved_parameter1 = "0"
+            predictive_diode_turn_off = "False"
+        }
+
+        "core/Series RLC Branch" {
+            num_phases = "Single-Phase"
+            branch_type = "RLC"
+            resistance = "10"
+            inductance = "10e-3"
+            initial_current = "0"
+            capacitance = "10e-6"
+            initial_voltage = "0"
+        }
+
+        "core/Single Phase Core Coupling" {
+            snb_type_i = "none"
+            R1 = "100000.0"
+            C1 = "1e-06"
+            C2 = "1e-06"
+            fixed_snb_i = "false"
+            snb_type_u = "none"
+            R2 = "0.1"
+            L1 = "0.1"
+            L2 = "0.1"
+            fixed_snb_u = "false"
+        }
+
+        "core/Three Phase Core Coupling" {
+            snb_type_i = "none"
+            R1 = "100e3"
+            C1 = "1e-06"
+            C2 = "1e-06"
+            fixed_snb_i = "false"
+            snb_type_u = "none"
+            R2 = "0.1"
+            L1 = "0.1"
+            L2 = "0.1"
+            fixed_snb_u = "false"
+            cpl_connection = "star"
+        }
+
+        "core/Three Phase Two Winding Transformer" {
+            input = "SC and OC tests"
+            Sn = "160000.0"
+            f = "50.0"
+            V1 = "10000.0"
+            V2 = "400.0"
+            usc1 = "4.0"
+            Psc1 = "2350.0"
+            R1 = "4.58984375"
+            L1 = ".0370093710364"
+            R2 = ".00734375"
+            L2 = "5.92149936583e-05"
+            r1 = ".00734375"
+            l1 = ".0186029389059"
+            r2 = ".00734375"
+            l2 = ".0186029389059"
+            core_model = "Linear"
+            ioc1 = "0.7"
+            Poc1 = "460.0"
+            Rm = "217391.304348"
+            Lm = "311.709196788"
+            flux_vals_SI = "[0, 1910.3, 2419.7]"
+            current_vals_SI = "[0, 0.66653, 277.72]"
+            rm = "347.826086957"
+            lm = "156.68213163"
+            flux_vals_pu = "[0, 1.2, 1.52]"
+            current_vals_pu = "[0, 0.0024, 1]"
+            flux_vals_SCOC = "[0, 1.2, 1.52]"
+            current_vals_SCOC = "[0, 0.0024, 1]"
+            upper_flux_vals_pu = "[0.2, 1.2, 1.52]"
+            upper_flux_vals_SI = "[318.33, 1910.3, 2419.7]"
+            upper_flux_vals_SCOC = "[0.2, 1.2, 1.52]"
+            hysteresis_number = "1"
+            execution_rate = "100e-6"
+            import_from_SI2SCOC = "Import from SI"
+            import_from_pu2SCOC = "Import from PU"
+            import_from_SCOC2SI = "Import from SC OC"
+            import_from_pu2SI = "Import from PU"
+            import_from_SCOC2pu = "Import from SC OC"
+            import_from_SI2pu = "Import from SI"
+            preview_flux_current = "Preview SI"
+            winding_1_connection = "Y"
+            winding_2_connection = "Y"
+            clock_number = "0"
+            embedded_cpl = "None"
+            coupling_type = "core"
+            ratio_type = "Automatic"
+            ratio = "0.1"
+            Rshunt = "inf"
+        }
+
+        "core/Three Phase Voltage Source" {
+            init_rms_value = "0.0"
+            init_frequency = "50.0"
+            init_phase = "0.0"
+        }
+
+        "core/Voltage Measurement" {
+            signal_access = "inherit"
+            bw_limit = "False"
+            frequency = "10e3"
+            comparator_enable = "False"
+            operator = "greater"
+            threshold = "0"
+            cmp_abs_value = "False"
+            feed_forward = "false"
+            sig_output = "False"
+            sig_output_filt_and_full_bw = "False"
+            execution_rate = "100e-6"
+            addr = "0"
+            nd_msr_estimation = "false"
+            dev_cpl_msr = "false"
+            host_device = "0"
+            output_to_device = "0"
+            dev_cpl_index = "0"
+            dev_cpl_var_nb = "0"
+            visible = "True"
+            override_signal_name = "False"
+            signal_name = ""
+        }
+    }
+
+    CODE model_init
+        # Numpy module is imported as 'np'
+        # Scipy module is imported as 'sp'
+        # The Schematic API is imported as 'mdl'
+        # To get the model file path, use 'mdl.get_model_file_path()'
+        # To print information to the console, use info()
+        
+        omega = 314.1592653589793
+        x_inv = 3.183098861837907
+        L_t = 1.25e-3
+        R_t = 0.0393
+        L_s = 1.25e-3
+        R_s = 0.0393
+        R_d = 10
+        C = 4e-6
+        L_n = 3e-3
+        R_n = 0.0942
+        
+        R_g = 0.1
+        L_g = 9.7e-4
+        R_g8 = 0.6544
+        L_g8 = 1.3e-3
+        R_g3 = 0.1384
+        L_g3 = 4.65e-4
+        R_g2 = 0.0493
+        L_g2 = 2.7152e-04
+        R_exp = 0.049
+        L_exp = 2.402e-04
+    ENDCODE
+}

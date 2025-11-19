@@ -17,7 +17,7 @@
     // DEVICE   11          TYPHOON Slot 3, CAN ALLT 5
     // DEVICE   12          BALANCE ALLT
 #define wires           3
-#define CTRL            13
+#define CTRL            16
         /*CTRL 8*/
         #define REF_TYPE        1 // Powers: 1, Currents: 0
 #define CTRL_Z          0

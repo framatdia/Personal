@@ -26,9 +26,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>jtag.ccxml</name>
+			<name>JTAG_XDS100.ccxml</name>
 			<type>1</type>
-			<location>C:/Users/JTRUJI~1/ti/CCSTargetConfigurations/jtag.ccxml</location>
+			<location>C:/Users/matas/ti/CCSTargetConfigurations/JTAG_XDS100.ccxml</location>
 		</link>
 	</linkedResources>
 </projectDescription>
